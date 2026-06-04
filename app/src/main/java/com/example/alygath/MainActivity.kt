@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         val forgot = findViewById<MaterialTextView>(R.id.forgot)
         val register = findViewById<MaterialTextView>(R.id.register)
+        val login = findViewById<MaterialButton>(R.id.login)
 
         forgot.setOnClickListener {
             val intent = Intent(this@MainActivity, Forgotpassword::class.java)
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         register.setOnClickListener {
             val intent = Intent(this@MainActivity, Register::class.java)
             startActivity(intent)
+        }
+
+        login.setOnClickListener {
+            val intent = Intent(this@MainActivity, Homepage::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

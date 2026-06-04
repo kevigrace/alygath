@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/loans"
+        android:title="Loans"
+        android:titleCondensed="L"
+        android:icon="@drawable/money"/>
+
+    <item
+        android:id="@+id/debts"
+        android:title="Debts"
+        android:titleCondensed="D"
+        android:icon="@drawable/debts"/>
+</menu>
