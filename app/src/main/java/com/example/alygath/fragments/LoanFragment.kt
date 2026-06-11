@@ -1,11 +1,14 @@
 package com.example.alygath.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.alygath.AddLoan
 import com.example.alygath.R
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,5 +59,15 @@ class LoanFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val btn = view.findViewById<ExtendedFloatingActionButton>(R.id.add_loan)
+
+        btn.setOnClickListener {
+            val intent = Intent(requireActivity(), AddLoan::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -28,12 +28,47 @@ class DbHelper(context: Context) : SQLiteOpenHelper(context,DATABASE_NAME,null,D
             )
         """.trimIndent()
 
+        val createLoanstable = "CREATE TABLE \"loans\" (\n" +
+                "\t\"id\"\tINTEGER,\n" +
+                "\t\"debtor\"\tTEXT,\n" +
+                "\t\"date\"\tTEXT,\n" +
+                "\t\"amount\"\tINTEGER,\n" +
+                "\t\"status\"\tTEXT,\n" +
+                "\t\"due_date\"\tTEXT,\n" +
+                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                ");".trimIndent()
+
+        val createDebtsTable = "CREATE TABLE \"debts\" (\n" +
+                "\t\"id\"\tINTEGER,\n" +
+                "\t\"creditor\"\tTEXT,\n" +
+                "\t\"date\"\tTEXT,\n" +
+                "\t\"amount\"\tINTEGER,\n" +
+                "\t\"status\"\tTEXT,\n" +
+                "\t\"due_date\"\tTEXT,\n" +
+                "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
+                ");".trimIndent()
+
         db.execSQL(createTable)
+        db.execSQL(createLoanstable)
+        db.execSQL(createDebtsTable)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
         onCreate(db)
+    }
+
+    fun createLoan(debtor: String, date: String, due_date: String, amount: Int, status: String): Long{
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("amount", amount)
+            put("status", status)
+            put("due_date", due_date)
+            put("date", date)
+            put("debtor", debtor)
+        }
+
+        return db.insert("loans",null,values)
     }
 
     fun insertUser(name: String, email: String): Long {

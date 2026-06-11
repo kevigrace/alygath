@@ -15,6 +15,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
         android:text="Add Loan"
+        android:id="@+id/add_loan"
         app:icon="@drawable/add_circle"
         android:layout_height="wrap_content"/>
 
